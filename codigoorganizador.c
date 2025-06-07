@@ -43,8 +43,6 @@ int main() {
     lista.tamanho = 0;
     char nomeArquivo[100];
     int opcao;
-
-    // Caminho para a pasta "Listas" na Area de Trabalho
     char desktopPath[MAX_PATH];
     char listasPath[MAX_PATH];
     HRESULT result = SHGetFolderPathA(NULL, CSIDL_DESKTOP, NULL, 0, desktopPath);
@@ -58,7 +56,6 @@ int main() {
 
     char buffer[100];
 
-    // Loop para validacao da opcao do menu principal
     while (1) {
         printf("1. Criar nova lista\n");
         printf("2. Abrir lista existente\n");
@@ -236,7 +233,6 @@ void abrirLista(char *nomeArquivo, ListaTarefas *lista) {
         char data[15];
         char descricao[TAM_DESCRICAO];
 
-        // Espera: nome \t dd/mm/aaaa \t descricao
         if (sscanf(linha, "%99[^\t]\t%14[^\t]\t%499[^\n]", nome, data, descricao) == 3) {
             strncpy(lista->tarefas[lista->tamanho].nome, nome, TAM_NOME);
             lista->tarefas[lista->tamanho].nome[TAM_NOME-1] = '\0';
@@ -293,7 +289,7 @@ void adicionarTarefa(ListaTarefas *lista) {
         return;
     }
     Tarefa novaTarefa;
-    memset(&novaTarefa, 0, sizeof(Tarefa)); // <-- Limpa toda a estrutura
+    memset(&novaTarefa, 0, sizeof(Tarefa));
     int c;
 
     // Nome da tarefa
