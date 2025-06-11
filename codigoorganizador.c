@@ -459,9 +459,11 @@ void removerTarefa(ListaTarefas *lista) {
         return;
     }
     int i;
-	for (i = indice - 1; i < lista->tamanho - 1; i++) {
-    lista->tarefas[i] = lista->tarefas[i + 1];
-	}
+    for (i = indice - 1; i < lista->tamanho - 1; i++) {
+        lista->tarefas[i] = lista->tarefas[i + 1];
+    }
+    lista->tamanho--;
+
     printf("Tarefa removida com sucesso!\n");
 }
 
